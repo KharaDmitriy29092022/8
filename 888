@@ -1,0 +1,69 @@
+#include <iostream>
+#include <fstream>
+#include <vector>
+
+using namespace std;
+
+// Функція для зчитування масиву з файлу
+vector<int> readArrayFromFile(const string& filename) {
+    vector<int> arr;
+    ifstream inputFile(filename);
+    if (!inputFile) {
+        cerr << "Unable to open input file " << filename << endl;
+        exit(1);
+    }
+    int num;
+    while (inputFile >> num) {
+        arr.push_back(num);
+    }
+    inputFile.close();
+    return arr;
+}
+
+// Функція для виведення масиву у консоль
+void printArray(const vector<int>& arr) {
+    for (int num : arr) {
+        cout << num << " ";
+    }
+    cout << endl;
+}
+
+// Функція для сортування масиву методом вибору
+void selectionSort(vector<int>& arr) {
+    int n = arr.size();
+    for (int i = 0; i < n - 1; ++i) {
+        int minIndex = i;
+        for (int j = i + 1; j < n; ++j) {
+            if (arr[j] < arr[minIndex]) {
+                minIndex = j;
+            }
+        }
+        if (minIndex != i) {
+            swap(arr[i], arr[minIndex]);
+        }
+    }
+}
+
+int main() {
+    string inputFilename;
+
+    // Зчитуємо ім'я файлу з консолі
+    cout << "Enter the input filename: ";
+    cin >> inputFilename;
+
+    // Зчитуємо масив з файлу
+    vector<int> arr = readArrayFromFile(inputFilename);
+
+    // Виводимо початковий масив
+    cout << "Original array: ";
+    printArray(arr);
+
+    // Сортуємо масив за допомогою методу вибору
+    selectionSort(arr);
+
+    // Виводимо відсортований масив
+    cout << "Sorted array: ";
+    printArray(arr);
+
+    return 0;
+}
