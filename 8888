@@ -1,0 +1,54 @@
+#include <iostream>
+
+using namespace std;
+
+// Функція для виконання завдання 1
+void task1() {
+    cout << "Executing task 1..." << endl;
+    // Ваш код для виконання завдання 1
+}
+
+// Функція для виконання завдання 2
+void task2() {
+    cout << "Executing task 2..." << endl;
+    // Ваш код для виконання завдання 2
+}
+
+// Функція для виконання завдання 3
+void task3() {
+    cout << "Executing task 3..." << endl;
+    // Ваш код для виконання завдання 3
+}
+
+int main() {
+    int choice;
+    do {
+        cout << "================ Menu ================" << endl;
+        cout << "1. Task 1" << endl;
+        cout << "2. Task 2" << endl;
+        cout << "3. Task 3" << endl;
+        cout << "4. Exit" << endl;
+        cout << "=======================================" << endl;
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        switch(choice) {
+            case 1:
+                task1();
+                break;
+            case 2:
+                task2();
+                break;
+            case 3:
+                task3();
+                break;
+            case 4:
+                cout << "Exiting the program." << endl;
+                break;
+            default:
+                cout << "Invalid choice. Please enter a valid option." << endl;
+        }
+    } while (choice != 4);
+
+    return 0;
+}
